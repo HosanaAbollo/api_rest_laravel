@@ -1,0 +1,9 @@
+
+
+
+- CREATION du projet laravel
+- Ajouter laravel passport
+- Ajouter les packages
+    - Configuration
+
+-Création du controller et les methodes (PassportController(Login, register))
