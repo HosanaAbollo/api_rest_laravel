@@ -2,8 +2,42 @@
 
 
 - CREATION du projet laravel
-- Ajouter laravel passport
+- Ajouter laravel passport   ( https://laravel.com/docs/6.x/passport )
 - Ajouter les packages
     - Configuration
 
 -Création du controller et les methodes (PassportController(Login, register))
+
+- Installation de POSTMAN pour tester l'application 
+
+
+
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+- php artisan make:auth  ---> permet de créer un système d'authentification avec des vues mais pour une api on ne l'utilise pas 
+ ce procédé car une api retourne des infos au format JSON et non des vues
+--------------------------------------------------------------------------------
+
+
+
+--------------------------------------------------------------------------------
+- Tout ce qui est en rapport à l'authentification avec API, laravel passport gère cela.
+
+ex : Register(name, email, password) -> l'API quand il envoit ces infos, il génère un token , et l'utilise pour acceder 
+a des fonctionnalités qui avait besoin d'authentification pour être accessible .
+
+-----
+Qu'est ce qu'un trait / une interface / une classe abstraite 
+
+Un trait permet des méthodes et des propriétés 
+
+
+----------------------------------------------------------------------------
+- Modification du fichier .env + création de BDD via serveur local
+- Utiliser ce site internet pour intaller le package passport : https://tutsforweb.com/laravel-passport-create-rest-api-with-authentication/
+    - composer require laravel/passport (installation du package passport)
+
+---------------------------- pour laravel 5.4 et en dessous -----------------------------------------------------------
+- Aller dans config/app , puis aller dans 'providers' et ajouter laravel passport (qui est un service provider en faite)
+------------------------------- -----------------------------------------------------------------------------------------
+- Ensuite faire la migration des tables avec : php artisan migrate
