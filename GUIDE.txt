@@ -40,4 +40,11 @@ Un trait permet des méthodes et des propriétés
 ---------------------------- pour laravel 5.4 et en dessous -----------------------------------------------------------
 - Aller dans config/app , puis aller dans 'providers' et ajouter laravel passport (qui est un service provider en faite)
 ------------------------------- -----------------------------------------------------------------------------------------
+
+
 - Ensuite faire la migration des tables avec : php artisan migrate
+- Ensuite installer passport avec : php artisan passport:installation
+
+- Implémenter le 'HasApiTokens' dans le model User 'app/User' et ajouter : use Laravel\Passport\HasApiTokens
+
+- Aller dans config\auth puis dans la clé 'api' remplacer le chmap 'tokens' par 'passport'

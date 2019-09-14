@@ -4,6 +4,12 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
+/*
+    Ajout Obligatoire du passport
+*/
+
+use Laravel\Passport\Passport;
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -23,6 +29,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Passport::routes();
     }
 }
