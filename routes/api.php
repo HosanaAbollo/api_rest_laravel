@@ -13,6 +13,16 @@ use Illuminate\Http\Request;
 |
 */
 
+// Pour une connection, passer par la methode login du PassportController
+Route::post('/login', 'PassportController@login');
+
+// Pour une inscription, passer par la methode register du PassportController
+Route::post('/register', 'PassportController@register');
+
+// Une fois que l'utilisateur est authenifié
 Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+
+    // Envoyer les détails sur notre utilisateur
+    Route::get('/details','PassportController@details');
+   // return $request->user();
 });

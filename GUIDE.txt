@@ -48,3 +48,14 @@ Un trait permet des méthodes et des propriétés
 - Implémenter le 'HasApiTokens' dans le model User 'app/User' et ajouter : use Laravel\Passport\HasApiTokens
 
 - Aller dans config\auth puis dans la clé 'api' remplacer le chmap 'tokens' par 'passport'
+
+-----------------------------------------------------------------------------------------------------------------------------
+
+- Créer les routes 
+- Créer le controller avec ses methodes (connection, inscription ...)
+- Tester avec Postman
+
+
+- Aller dans routes/api.php
+    -   D'abord créer le controller : php artisan make:controller PassportController
+    - 
