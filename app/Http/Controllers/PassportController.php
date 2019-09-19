@@ -14,9 +14,24 @@ class PassportController extends Controller
         $this->validate($request, [
 
             'name' => 'required|min:3',
-            'email' => 'required|unique:users',
+            'email' => 'required',  // Enlever le unique pour le debug via POSTMAN
             'password' => 'required|min:4'
         ]);
+
+        /*
+                TRAITEMENT DES MESSAGES D'ERREUR POUR LES CHAMPS NON REMPLIES OU NON EXACT
+                // Ne pas oublier d'importer validator
+                $validator = Validator::make($request->all(),[
+                     'name' => 'required|min:3',
+                    'email' => 'required',  // Enlever le unique pour le debug via POSTMAN
+                    'password' => 'required|min:4'                  
+                ]);
+
+                if($validator->fails()){
+                    // Si il y a une erreur on envoit les erreurs
+                    return->response()->json([$validators->errors()])  //Mettre le status 422    data:
+                } else  {}   // On créer l'user
+        */
 
         //  Enregisgtrement de l'utilisateur avant validation
         $user = User::create([
@@ -26,16 +41,19 @@ class PassportController extends Controller
         ]);
 
         // Generation d'un token apres enregistrement
+            // AccessToken permet de generer un token de manière générale
         $token = $user->createToken('MotDePasse')->accessToken;
 
-        // Envoi de réponse à l'user
+        // Envoi de réponse à l'user sous format JSON , ne pas oublier d'envoyer un status 
+        // -> pour debug on peut envoyer $request a la place de $token et supprimer $user et $token temporairement
+        // Avec Postman ne pas oublier d'aciter le x-www-form-urlencoded
         return response()->json(['token' => $token]);
     }
 
     public function login(Request $request)
     {
         $this->validate($request, [
-            'email' => 'required|unique:users',
+            'email' => 'required',
             'password' => 'required|min:4'
         ]);
 
@@ -48,7 +66,9 @@ class PassportController extends Controller
 
         if(auth()->attempt($credential))
         {
-            $token = auth()->user->createtoken('MotDePasse');
+            $token = auth()->user->createToken('MotDePasse')->accessToken;
+            
+            // Envoi de réponse à l'user sous format JSON , ne pas oublier d'envoyer un status
             return response()->json(['token' => $token]);
         }
         else{

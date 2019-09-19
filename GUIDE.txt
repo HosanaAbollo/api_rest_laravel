@@ -58,4 +58,12 @@ Un trait permet des méthodes et des propriétés
 
 - Aller dans routes/api.php
     -   D'abord créer le controller : php artisan make:controller PassportController
-    - 
+    -
+    
+
+------------------------------------------------------
+En cas de problème : 
+    - php artisan migrate:fresh
+    - pour forcer la création des clés : 
+        - php artisan passport:install --force
+------------------------------------------------------

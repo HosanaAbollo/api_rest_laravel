@@ -19,10 +19,10 @@ Route::post('/login', 'PassportController@login');
 // Pour une inscription, passer par la methode register du PassportController
 Route::post('/register', 'PassportController@register');
 
-// Une fois que l'utilisateur est authenifié
+// Une fois que l'utilisateur est authenifié alors il peut accéder aux détails
 Route::middleware('auth:api')->get('/user', function (Request $request) {
 
-    // Envoyer les détails sur notre utilisateur
+    // Envoyer les détails sur l'utilisateur
     Route::get('/details','PassportController@details');
    // return $request->user();
 });

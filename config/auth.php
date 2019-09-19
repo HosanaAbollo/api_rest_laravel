@@ -35,6 +35,7 @@ return [
     |
     */
 
+    // Ne pas oublier d'ajouter la valeur 'token' a envoyer pour l'utilisateur du service Passport
     'guards' => [
         'web' => [
             'driver' => 'session',
